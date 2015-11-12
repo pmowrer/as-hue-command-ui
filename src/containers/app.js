@@ -38,6 +38,7 @@ class App extends Component {
     return (
       <ul>
         {lights
+          .filter(light => light.state.reachable)
           .map((light, i) =>
             <li key={i}>
               <div style={styles.lightIcon(light.modelid)}></div>
