@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect}          from 'react-redux';
+import attachFastClick    from 'fastclick';
 import {
   getAllLights,
   toggleLight
@@ -16,6 +17,12 @@ const ICONS = {
 class App extends Component {
   constructor(props) {
     super(props);
+
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function() {
+        attachFastClick.attach(document.body);
+      }, false);
+    }
   }
 
   componentDidMount() {
