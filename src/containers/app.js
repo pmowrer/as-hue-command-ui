@@ -46,6 +46,12 @@ class App extends Component {
       <ul>
         {lights
           .filter(light => light.state.reachable)
+          // Create a copy since sort doesn't return a new array.
+          .concat()
+          .sort((a, b ) => {
+            [a, b] = [a.name, b.name];
+            return a > b ? 1 : (a < b ? -1 : 0);
+          })
           .map((light, i) =>
             <li key={i}>
               <div style={styles.lightIcon(light.modelid)}></div>
