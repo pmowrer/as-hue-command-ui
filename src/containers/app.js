@@ -18,6 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    // Enable `fastclick` to eliminate 300ms tap delay on mobile.
     if ('addEventListener' in document) {
       document.addEventListener('DOMContentLoaded', function() {
         attachFastClick.attach(document.body);
