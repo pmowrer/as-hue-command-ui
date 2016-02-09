@@ -10,7 +10,7 @@ export default {
   devtool: '#source-map',
   module: {
     loaders: [{
-      test: getRegExp('js'),
+      test: getSourceRegExp('js'),
       loader: 'babel'
     }, {
       test: /\.json$/,
@@ -33,8 +33,11 @@ export default {
   }
 };
 
-function getRegExp(ext) {
+export default function getSourceRegExp(ext, modules = ['as-hue-command', 'rxjs-es']) {
+  // Convert possible string value to array.
+  ext = [].concat(ext);
+
   return new RegExp(
-    `^(?:(?!.*(node_modules))|(?:.*(?:\\1)(?:as-hue-command)(?!.*node_modules))).*\\.${ext}$`
+    `^(?:(?!.*(node_modules))|(?:.*(?:\\1)\\/(?:${modules.join('|')})\\/(?!.*node_modules))).*\\.(?:${ext.join('|')})$`
   );
 }
