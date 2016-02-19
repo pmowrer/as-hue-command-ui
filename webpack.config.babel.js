@@ -9,6 +9,9 @@ export default {
   },
   devtool: '#source-map',
   module: {
+    // One of `request`s deps has a bad module definiton, breaking bundle.
+    // https://github.com/webpack/webpack/issues/138
+    noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     loaders: [{
       test: getSourceRegExp('js'),
       loader: 'babel'
