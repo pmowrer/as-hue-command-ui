@@ -33,7 +33,7 @@ export default {
   }
 };
 
-export default function getSourceRegExp(ext, modules = ['as-hue-command', 'rxjs-es']) {
+export default function getSourceRegExp(ext, modules = ['as-hue-command', 'rxjs-es', 'lodash-es']) {
   // Convert possible string value to array.
   ext = [].concat(ext);
 
