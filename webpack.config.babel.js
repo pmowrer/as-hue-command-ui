@@ -21,7 +21,7 @@ export default {
     }, {
       test: require.resolve('as-hue-command'),
       loaders: [
-        'expose?ashue',
+        'expose?connect',
         'babel'
       ]
     }]

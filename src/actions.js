@@ -1,4 +1,5 @@
-import ashue from 'as-hue-command';
+import {connect} from 'as-hue-command';
+const hue = connect();
 
 function receiveAllLights(data) {
   return {
@@ -21,14 +22,14 @@ function receiveLightStateUpdate(name, id, data) {
 
 export function getAllLights() {
   return dispatch => {
-    return ashue.lights.all().value
+    return hue.lights.all().value
       .subscribe(data => dispatch(receiveAllLights(data)));
   };
 }
 
 export function toggleLight({id, value}) {
   return dispatch => {
-    return ashue.lights.get(id).toggle(value)
+    return hue.lights.get(id).toggle(value)
       .subscribe(data => dispatch(receiveLightStateUpdate('on', id, data)));
   };
 }
